@@ -7,9 +7,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+//该类使用了Lombok库的注解，包括@Data、@AllArgsConstructor和@NoArgsConstructor，这些注解简化了类的编写，自动生成了常用的方法，如getter和setter。
 public class Result<T> {
+//    整数类型，表示结果的代码。
     private Integer code;
+//    字符串类型，表示结果的消息。
     private String message;
+//    泛型类型，表示结果的数据
     private T data;
 
     public static <T> Result<T> success() {

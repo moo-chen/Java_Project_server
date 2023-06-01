@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/auth")
+// 该类使用了@RestController和@RequestMapping注解，将该类标识为一个RESTful控制器，并指定了基本的请求路径为/api/auth。
 public class UserController {
 
     @Autowired
+//    使用了@Autowired注解将UserService自动注入到控制器中，用于处理与用户相关的逻辑操作。
     private UserService userService;
 
     // 注册
@@ -23,8 +25,8 @@ public class UserController {
         if (userService.findByTelephone(user.getTelephone()) != null) {
             return Result.fail("手机号已存在");
         }
+//        调用userService.save方法保存用户对象。
         userService.save(user);
-        System.out.println("111");
         return Result.success("注册成功");
     }
 
@@ -37,7 +39,8 @@ public class UserController {
         if (user_ == null) {
             return Result.fail("手机号不存在");
         }
-        if (!user.getPassword().equals(password)) {
+        if (user.getPassword()!=(password)) {
+            System.out.println(password);
             return Result.fail("密码不匹配");
         }
         return Result.success("登录成功");
