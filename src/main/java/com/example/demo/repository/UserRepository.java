@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 //在UserRepository接口中，除了继承JpaRepository<User, Long>，还定义了一个自定义查询方法findByTelephone。这个方法用于根据电话号码查询用户信息，并返回对应的用户实体对象。
 public interface UserRepository extends JpaRepository<User, Long> {
-    User findByTelephone(String telephone);
+    User findByPhone(String phone);
 }
