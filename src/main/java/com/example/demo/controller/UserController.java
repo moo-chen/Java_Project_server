@@ -20,24 +20,24 @@ public class UserController {
     @PostMapping("/register")
     public Result<String> register(@RequestBody User user) {
         // 检查手机号是否已存在
-        if (userService.findByTelephone(user.getTelephone()) != null) {
+        if (userService.findByPhone(user.getPhone()) != null) {
             return Result.fail("手机号已存在");
         }
         userService.save(user);
-        System.out.println("111");
         return Result.success("注册成功");
     }
 
     // 登录
     @PostMapping("/login")
     public Result<String> login(@RequestBody User user) {
-        String telephone = user.getTelephone();
+        String phone = user.getPhone();
         String password = user.getPassword();
-        User user_ = userService.findByTelephone(telephone);
-        if (user_ == null) {
+        User user_ = userService.findByPhone(phone);
+        // 检查手机号是否已存在
+        if (userService.findByPhone(user.getPhone()) == null) {
             return Result.fail("手机号不存在");
         }
-        if (!user.getPassword().equals(password)) {
+        if (!user_.getPassword().equals(password)) {
             return Result.fail("密码不匹配");
         }
         return Result.success("登录成功");

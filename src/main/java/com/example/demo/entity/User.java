@@ -19,8 +19,8 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "telephone")
-    private String telephone;
+    @Column(name = "phone")
+    private String phone;
 
     @Column(name = "password")
     private String password;
@@ -42,12 +42,12 @@ public class User {
         this.name = name;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getPassword() {
